@@ -24,6 +24,7 @@ module AutoRia
       result[:year] = details['productionDate'] || doc.search('h1.head').first.try(:[], 'title').to_s.scan(/((?:19|20)\d\d)/).first&.first.to_i
       set_new_car_related_fields!
 
+      byebug
       if result[:maker].blank? || result[:model].blank? || result[:year] <= 0
         return { deleted: true, details: {} }
       end
